@@ -145,7 +145,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '{{/if}}',
 		     '{{#if manualgain}}',
 			    '{{#if gainCost}}',
-			    	'<span>Converting 1 {{name}} costs <span id="'+this.page+'_{{htmlId}}_gainCost"></span>',
+			    	'<span>Converting {{gainNum}} {{name}} costs <span id="'+this.page+'_{{htmlId}}_gainCost"></span>',
 			     	'<div class="gainButton">',
 				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
 				         '<span class="{{htmlId}}gainNum">Convert {{gainNum}}</span>',
