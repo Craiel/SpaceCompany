@@ -432,6 +432,24 @@ Game.resourceData = (function () {
         unlocked: false
     };
 
+    /******************************
+     * Extended Vector  *
+     ******************************/
+    instance.gasoline = {
+        name: 'Gasoline',
+        desc: 'Gasoline is obtained by the fractional distillation of oil, enhanced with a variety of additives.',
+        icon: 'gasolineIcon',
+        category: 'earth',
+        page: 'resources',
+        baseCapacity: 50,
+        emc: 9,
+        gainNum: 0.5,
+        gainCost: {'oil': 1,},
+        toggleable: false,
+        manualgain: true,
+        unlocked: false
+    };
+
     return instance;
 }());
 
@@ -637,6 +655,18 @@ Game.storageData = (function(){
         cost: {
             'meteorite': 50,
             'lunarite': 4
+        }
+    });
+
+    /******************************
+     * Extended Vector  *
+     ******************************/
+    instance.entries.gasoline = $.extend({}, baseUpgradeData, {
+        desc: 'Upgrade your Gasoline storage size to ',
+        resource: 'gasoline',
+        cost: {
+            'gasoline': 50,
+            'metal': 4
         }
     });
 

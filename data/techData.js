@@ -98,10 +98,28 @@ Game.techData = (function () {
         cost: {
             'science': 30
         },
+        newTechs: ['unlockGasoline'],
         tabAlerts: ['resources'],
         onApply: function(){
             Game.resources.unlock("oil");
             Game.buildings.unlock("oilT1");
+        }
+    });
+
+    instance.unlockGasoline = $.extend({}, techBase, {
+        name: 'Gasoline distillation',
+        desc: 'Gasoline provides access to more efficient Propulsion Technologies.',
+        buttonText: 'Unlock Gasoline',
+        type: TECH_TYPE.UNLOCK,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 6000
+        },
+        tabAlerts: ['resources'],
+        onApply: function(){
+            Game.resources.unlock("gasoline");
+            Game.buildings.unlock("gasolineT1");
+            Game.buildings.unlock("energyET1");
         }
     });
 
@@ -527,9 +545,89 @@ Game.techData = (function () {
         cost: {
             'science': 1000
         },
+        newTechs: ['upgradeEngineTech2'],
         tabAlerts: ['resources'],
         onApply: function() {
             Game.buildings.entries.energyT1.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeEngineTech2 = $.extend({}, techBase, {
+        name: 'Upgrade Engine Technology II',
+        desc: 'Upgrading Engine Technology III will make Carbon engines produce 8 Energy per second instead of 4.',
+        buttonText: 'Upgrade Carbon Engines',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 100000
+        },
+        newTechs: ['upgradeEngineTech3'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT1.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeEngineTech3 = $.extend({}, techBase, {
+        name: 'Upgrade Engine Technology III',
+        desc: 'Upgrading Engine Technology III will make Carbon engines produce 32 Energy per second instead of 8.',
+        buttonText: 'Upgrade Carbon Engines',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1000000
+        },
+        newTechs: ['upgradeEngineTech4'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT1.resourcePerSecond.energy *= 4;
+        }
+    });
+
+    instance.upgradeEngineTech4 = $.extend({}, techBase, {
+        name: 'Upgrade Engine Technology IV',
+        desc: 'Upgrading Engine Technology IV will make Carbon engines produce 256 Energy per second instead of 32.',
+        buttonText: 'Upgrade Carbon Engines',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 100000000
+        },
+        newTechs: ['upgradeEngineTech5'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT1.resourcePerSecond.energy *= 8;
+        }
+    });
+
+    instance.upgradeEngineTech5 = $.extend({}, techBase, {
+        name: 'Upgrade Engine Technology V',
+        desc: 'Upgrading Engine Technology V will make Carbon engines produce 4,096 Energy per second instead of 256.',
+        buttonText: 'Upgrade Carbon Engines',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1000000000
+        },
+        newTechs: ['upgradeEngineTech6'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT1.resourcePerSecond.energy *= 16;
+        }
+    });
+
+    instance.upgradeEngineTech6 = $.extend({}, techBase, {
+        name: 'Upgrade Engine Technology VI',
+        desc: 'Upgrading Engine Technology VI will make Carbon engines produce 131,072 Energy per second instead of 4,096.',
+        buttonText: 'Upgrade Carbon Engines',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 10000000000
+        },
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT1.resourcePerSecond.energy *= 32;
         }
     });
 
@@ -542,10 +640,89 @@ Game.techData = (function () {
         cost: {
             'science': 5000
         },
-        newTechs: ['unlockBatteries'],
+        newTechs: ['unlockBatteries', 'upgradeSolarTech2'],
         tabAlerts: ['resources'],
         onApply: function() {
             Game.buildings.entries.energyT2.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeSolarTech2 = $.extend({}, techBase, {
+        name: 'Upgrade Solar Technology II',
+        desc: 'Upgrading Solar Technology III will make solar panels produce 6 Energy per second instead of 3.',
+        buttonText: 'Upgrade Solar Panels',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 100000
+        },
+        newTechs: ['upgradeSolarTech3'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT2.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeSolarTech3 = $.extend({}, techBase, {
+        name: 'Upgrade Solar Technology III',
+        desc: 'Upgrading Solar Technology III will make solar panels produce 24 Energy per second instead of 6.',
+        buttonText: 'Upgrade Solar Panels',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1000000
+        },
+        newTechs: ['upgradeSolarTech4'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT2.resourcePerSecond.energy *= 4;
+        }
+    });
+
+    instance.upgradeSolarTech4 = $.extend({}, techBase, {
+        name: 'Upgrade Solar Technology IV',
+        desc: 'Upgrading Solar Technology IV will make solar panels produce 192 Energy per second instead of 24.',
+        buttonText: 'Upgrade Solar Panels',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 100000000
+        },
+        newTechs: ['upgradeSolarTech5'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT2.resourcePerSecond.energy *= 8;
+        }
+    });
+
+    instance.upgradeSolarTech5 = $.extend({}, techBase, {
+        name: 'Upgrade Solar Technology V',
+        desc: 'Upgrading Solar Technology V will make solar panels produce 3,072 Energy per second instead of 192.',
+        buttonText: 'Upgrade Solar Panels',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1000000000
+        },
+        newTechs: ['upgradeSolarTech6'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT2.resourcePerSecond.energy *= 16;
+        }
+    });
+
+    instance.upgradeSolarTech6 = $.extend({}, techBase, {
+        name: 'Upgrade Solar Technology VI',
+        desc: 'Upgrading Solar Technology VI will make solar panels produce 98,304 Energy per second instead of 3,072.',
+        buttonText: 'Upgrade Solar Panels',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 10000000000
+        },
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyT2.resourcePerSecond.energy *= 32;
         }
     });
 

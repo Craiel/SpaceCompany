@@ -10,7 +10,7 @@ Game.achievementsCategoryData = (function () {
 		'resOil', 'resMetal', 'resGems', 'resCarbon', 'resWood', 'resSilicon',
 		'resLunarite', 'resMethane', 'resTitanium', 'resGold', 'resSilver',
 		'resHydrogen', 'resHelium', 'resIce', 'resMeteorite',
-		'resScience', 'resRocketFuel' ]
+		'resScience', 'resRocketFuel', 'resGasoline' ]
 	};
 
 	instance.producers = {
@@ -19,6 +19,7 @@ Game.achievementsCategoryData = (function () {
 		entries: [
 		'prodPlasmaT1', 'prodPlasmaT2',
 		'prodEnergyT1', 'prodEnergyT2', 'prodEnergyT3', 'prodEnergyT4', 'prodEnergyT5', 'prodEnergyT6',
+		'prodEnergyET1',
 		'prodUraniumT1', 'prodUraniumT2', 'prodUraniumT3', 'prodUraniumT4',
 		'prodLavaT1', 'prodLavaT2', 'prodLavaT3', 'prodLavaT4',
 
@@ -42,7 +43,9 @@ Game.achievementsCategoryData = (function () {
 
 		'prodScienceT1', 'prodScienceT2', 'prodScienceT3', 'prodScienceT4',
 		'prodRocketFuelT1', 'prodRocketFuelT2', 'prodRocketFuelT3',
-		'prodDysonT1', 'prodDysonT2' ]
+		'prodDysonT1', 'prodDysonT2',
+
+		'prodGasolineT1']
 	};
 
 	instance.other = {
@@ -87,7 +90,7 @@ Game.achievementsData = (function(){
 		evaluator: function(x) { return getResource(RESOURCE.Oil) >= x },
 		progressEvaluator: function(x) { return getResource(RESOURCE.Oil) / x }
 	};
-	
+
 	instance.resMetal = {
 		id_v4: 'ach_3',
 		categoryInstance: Game.achievementsCategoryData.resources,
@@ -1175,6 +1178,72 @@ Game.achievementsData = (function(){
 		brackets: [86400, 864000, 2.628e+6, 7.884e+6, 1.577e+7],
 		evaluator: function(x) { return Game.statistics.entries.timePlayed.valueAlltime >= x },
 		progressEvaluator: function(x) { return Game.statistics.entries.timePlayed.valueAlltime/x }
+	};
+
+	/*****************
+	 ** Extended Vector **
+	 *****************/
+	instance.resGasoline = {
+		id_v4: 'ach_122',
+		categoryInstance: Game.achievementsCategoryData.resources,
+		iconName: 'gasolineIcon',
+		title: 'Collect %s Gasoline',
+		evaluator: function(x) { return getResource(RESOURCE.Gasoline) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Gasoline) / x }
+	}
+
+	instance._prodGasolineT1 = {
+		id_v4: "ach_123",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gasolineIcon',
+		title: "Own %s Refinery Workshop",
+		evaluator: function(x) { return Game.buildings.entries["gasolineT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gasolineT1"].current/x }
+	};
+
+	instance._prodGasolineT2 = {
+		id_v4: "ach_124",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gasolineIcon',
+		title: "Own %s Industrial Refinery",
+		evaluator: function(x) { return Game.buildings.entries["gasolineT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gasolineT2"].current/x }
+	};
+
+	instance._prodGasolineT3 = {
+		id_v4: "ach_125",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gasolineIcon',
+		title: "Own %s Refinery Network",
+		evaluator: function(x) { return Game.buildings.entries["gasolineT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gasolineT3"].current/x }
+	};
+
+	instance._prodGasolineT4 = {
+		id_v4: "ach_126",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gasolineIcon',
+		title: "Own %s Planetary Refinery",
+		evaluator: function(x) { return Game.buildings.entries["gasolineT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gasolineT4"].current/x }
+	};
+
+	instance._prodGasolineT5 = {
+		id_v4: "ach_127",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gasolineIcon',
+		title: "Own %s Orbital Refinery",
+		evaluator: function(x) { return Game.buildings.entries["gasolineT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gasolineT5"].current/x }
+	};
+
+	instance._prodEnergyET1 = {
+		id_v4: "ach_128",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'energyIcon',
+		title: "Own %s Combustion Reactors",
+		evaluator: function(x) { return Game.buildings.entries["energyET1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyET1"].current/x }
 	};
 
 	return instance;

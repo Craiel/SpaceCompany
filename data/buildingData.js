@@ -99,6 +99,20 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.energyET1 = $.extend({}, baseProducerBuilding, {
+        name: 'Combustion Generator',
+        desc: 'Gains Energy from burning Gasoline',
+        resource: 'energy',
+        resourcePerSecond: {
+            'energy': 25,
+            'gasoline': -1
+        },
+        cost: {
+            'metal': 3000,
+            'oil': 1500
+        }
+    });
+
     ////////////
     // Plasma //
     ////////////
@@ -1652,6 +1666,99 @@ Game.buildingData = (function () {
             Templates.uiFunctions.unlock("asteroidBelt");
             // Unlock moon
         }
+    });
+
+    /*****************
+     ** Extended Vector **
+     *****************/
+    instance.gasolineT1 = $.extend({}, baseProducerBuilding, {
+        name: 'Refinery Workshop',
+        desc: 'Refines Crude Oil into Gasoline',
+        resource: 'gasoline',
+        resourcePerSecond: {
+            'oil': -1,
+            'energy': -5,
+            'gasoline': 0.5
+        },
+        cost: {
+            'metal': 1000,
+            'gem': 500
+        },
+        unlocked: false,
+    });
+
+    instance.gasolineT2 = $.extend({}, baseProducerBuilding, {
+        name: 'Industrial Refinery',
+        desc: 'Refines Crude Oil into Gasoline on industrial scale',
+        resource: 'gasoline',
+        resourcePerSecond: {
+            'oil': -9,
+            'energy': -47,
+            'gasoline': 5.2
+        },
+        cost: {
+            'metal': 50000,
+            'gem': 7000
+        },
+        unlocked: false,
+    });
+
+    instance.gasolineT3 = $.extend({}, baseProducerBuilding, {
+        name: 'Refinery Network',
+        desc: 'Network of Refineries linked together to form a giant complex',
+        resource: 'gasoline',
+        resourcePerSecond: {
+            'oil': -879,
+            'energy': -4219,
+            'gasoline': 519
+        },
+        cost: {
+            'metal': 110000,
+            'lunarite': 90000,
+            'silicon': 81000,
+            'gold': 23000
+        },
+        unlocked: false,
+    });
+
+    instance.gasolineT4 = $.extend({}, baseProducerBuilding, {
+        name: 'Planetary Refinery',
+        desc: 'Refinery Megacomplex stretching hundreds of kilometers, visible from space.',
+        resource: 'gasoline',
+        resourcePerSecond: {
+            'oil': -6416,
+            'energy': -31219,
+            'gasoline': 7119
+        },
+        cost: {
+            'metal': 250000,
+            'lunarite': 150000,
+            'silicon': 181000,
+            'gold': 83000,
+            'silver': 15000
+        },
+        unlocked: false,
+    });
+
+    instance.gasolineT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Orbital Refinery',
+        desc: 'Large space refinery complex that would no longer fit on Earth',
+        resource: 'gasoline',
+        resourcePerSecond: {
+            'oil': -13021,
+            'energy': -59125,
+            'gasoline': 16296
+        },
+        cost: {
+            'metal': 550000,
+            'lunarite': 650000,
+            'silicon': 381000,
+            'gold': 283000,
+            'silver': 315000,
+            'helium': 120000,
+            'uranium': 59000
+        },
+        unlocked: false,
     });
 
     return instance;

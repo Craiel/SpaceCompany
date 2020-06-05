@@ -40,7 +40,9 @@ RESOURCE = {
 	Ice: 'ice',
 	Meteorite: 'meteorite',
 	Science: 'science',
-	RocketFuel: 'rocketFuel'
+	RocketFuel: 'rocketFuel',
+
+    Gasoline: 'gasoline',
 };
 
 INDEX_NONE = -1;

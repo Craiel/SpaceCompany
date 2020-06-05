@@ -110,6 +110,12 @@ function legacyLoad(savegame){
 		if(typeof savegame.annihilator !== "undefined") Game.buildings.entries.siliconT3.current = savegame.annihilator;
 		if(typeof savegame.desert !== "undefined") Game.buildings.entries.siliconT4.current = savegame.desert;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
+		if(typeof savegame.gasolineT1 !== "undefined") Game.buildings.entries.gasolineT1.current = savegame.gasolineT1;
+		if(typeof savegame.gasolineT2 !== "undefined") Game.buildings.entries.gasolineT2.current = savegame.gasolineT2;
+		if(typeof savegame.gasolineT3 !== "undefined") Game.buildings.entries.gasolineT3.current = savegame.gasolineT3;
+		if(typeof savegame.gasolineT4 !== "undefined") Game.buildings.entries.gasolineT4.current = savegame.gasolineT4;
+		if(typeof savegame.gasolineT5 !== "undefined") Game.buildings.entries.gasolineT5.current = savegame.gasolineT5;
+		if(typeof savegame.energyET1 !== "undefined") Game.buildings.entries.energyET1.current = savegame.energyET1;
 		if(typeof savegame.explored !== "undefined"){
 			for(var i = 0; i < savegame.explored.length; i++){
 				Game.solar.entries[savegame.explored[i]].explored = true;
