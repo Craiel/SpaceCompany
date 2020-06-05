@@ -391,6 +391,22 @@ Templates.objectConstructor.UiFunctions = function() {
         })
         return true;
     }
+
+    let setClassTextCache = {};
+    let classTextCacheSkips = 0;
+    let classTextSets = 0;
+
+    this.traceClassTextStats = function() {
+        console.log("Set: " + classTextSets);
+        console.log("Skips: " + classTextCacheSkips);
+    }
+
+    this.resetClassTextCache = function() {
+        setClassTextCache = {};
+        classTextCacheSkips = 0;
+        classTextSets = 0;
+    }
+
     /**
      * Sets a text to all elements containing a class
      * @param  {String}   setText  The text (or formatted html) to add.
@@ -402,12 +418,36 @@ Templates.objectConstructor.UiFunctions = function() {
             console.warn("The text set to be added to '"+target+"' is undefined.")
             return false;
         }
-        var nodes = document.querySelectorAll('.'+target);
-        if (nodes == 'undefined') {
-            console.warn("Trying to add '"+add+"' to all elements with the class: '"+to+"', but couldn't find any.")
+
+        if(setClassTextCache[target] === setText){
+            classTextCacheSkips++;
+            return true;
+        }
+
+        setClassTextCache[target] = setText;
+        classTextSets++;
+
+        let nodes = document.querySelectorAll('.'+target);
+        if (nodes.length === 0) {
+            console.warn("Trying to add '"+setText+"' to all elements with the class: '"+target+"', but couldn't find any.")
             return false;
         }
-        nodes.forEach(function(node) { node.innerHTML = setText; })
+
+        let content = setText.toString();
+        let contentIsNode = false;
+        if(content.includes('<')) {
+            //content = $(setText);
+            contentIsNode = true;
+        }
+
+        nodes.forEach(function(node) {
+            if(contentIsNode) {
+                node.innerHTML = setText;
+            } else {
+                node.textContent = content;
+            }
+        })
+
         return true;
     }
 
