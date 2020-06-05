@@ -216,22 +216,34 @@ Game.settings = (function(){
                     var cost = object.cost;
                     var result = '<dl style="margin-bottom:0px;"><table><tr><td><dt>Cost:</dt>';
                     Object.keys(cost).forEach (function(c) {
+                        let prefix = "<dd>&#8227; ";
+                        let valueFormat = Game.settings.format(cost[c], 0).toString();
+                        let resName = Game.resources.entries[c].name;
+                        let timeString = "~~";
+
                         if(c == "segment"){
+                            resName = "Dyson Segments";
                             if(Game.solCenter.entries.dyson.items.segment.current >= cost[c]){
-                                var time = "Done!".bold()
+                                timeString = "Done!".bold()
                             } else {
-                                var time = "~~";
+                                valueFormat = valueFormat.fontcolor("red");
                             }
-                            result += "<dd>&#8227; Dyson Segments: "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"
                         } else {
                             if (cost[c] > Game.resources.entries[c].capacity && c != "science" && c != "rocketFuel") {
-                                var time = "Insufficient storage".bold();
+                                timeString = "Insufficient storage".bold();
+                                valueFormat = valueFormat.fontcolor("red");
                             } else {
-                                var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0);
-                                time = ((cost[c] > Game.resources.entries[c].current) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                                if(cost[c] > Game.resources.entries[c].current) {
+                                    let time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0);
+                                    timeString = Game.utils.getTimeDisplay(time, true);
+                                    valueFormat = valueFormat.fontcolor("red");
+                                } else {
+                                    timeString = "Done!".bold();
+                                }
                             }
-                            result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
                         }
+
+                        result += prefix + resName + ": " + valueFormat + " ( " + timeString + ")</dd>";
                     });
                     result += '</td><td style="position:absolute;margin-left:100px">';
                     if ('storage' in object) {
