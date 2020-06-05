@@ -115,11 +115,13 @@ Game.techData = (function () {
         cost: {
             'science': 6000
         },
+        newTechs: ['upgradeCombustionTech'],
         tabAlerts: ['resources'],
         onApply: function(){
             Game.resources.unlock("gasoline");
             Game.buildings.unlock("gasolineT1");
             Game.buildings.unlock("energyET1");
+
         }
     });
 
@@ -559,7 +561,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 100000
+            'science': 100000,
+            'carbon': 10000
         },
         newTechs: ['upgradeEngineTech3'],
         tabAlerts: ['resources'],
@@ -575,7 +578,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 1000000
+            'science': 1000000,
+            'carbon': 150000
         },
         newTechs: ['upgradeEngineTech4'],
         tabAlerts: ['resources'],
@@ -591,7 +595,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 100000000
+            'science': 100000000,
+            'carbon': 2000000
         },
         newTechs: ['upgradeEngineTech5'],
         tabAlerts: ['resources'],
@@ -607,7 +612,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 1000000000
+            'science': 1000000000,
+            'carbon': 620000000
         },
         newTechs: ['upgradeEngineTech6'],
         tabAlerts: ['resources'],
@@ -623,11 +629,113 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 10000000000
+            'science': 10000000000,
+            'carbon': 2800000000
         },
         tabAlerts: ['resources'],
         onApply: function() {
             Game.buildings.entries.energyT1.resourcePerSecond.energy *= 32;
+        }
+    });
+
+    instance.upgradeCombustionTech = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology',
+        desc: 'Upgrading Combustion Technology will make Combustion generators produce 50 Energy per second instead of 25.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 500000,
+            'oil': 50000
+        },
+        newTechs: ['upgradeCombustionTech2'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeCombustionTech2 = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology II',
+        desc: 'Upgrading Combustion Technology III will make Combustion generators produce 100 Energy per second instead of 50.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1500000,
+            'oil': 300000
+        },
+        newTechs: ['upgradeCombustionTech3'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 2;
+        }
+    });
+
+    instance.upgradeCombustionTech3 = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology III',
+        desc: 'Upgrading Combustion Technology III will make Combustion generators produce 400 Energy per second instead of 100.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 6500000,
+            'oil': 2100000
+        },
+        newTechs: ['upgradeCombustionTech4'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 4;
+        }
+    });
+
+    instance.upgradeCombustionTech4 = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology IV',
+        desc: 'Upgrading Combustion Technology IV will make Combustion generators produce 3,200 Energy per second instead of 400.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 46500000,
+            'oil': 147000000
+        },
+        newTechs: ['upgradeCombustionTech5'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 8;
+        }
+    });
+
+    instance.upgradeCombustionTech5 = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology V',
+        desc: 'Upgrading Combustion Technology V will make Combustion generators produce 51,200 Energy per second instead of 3,200.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 270000000,
+            'oil': 7920000000
+        },
+        newTechs: ['upgradeCombustionTech6'],
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 16;
+        }
+    });
+
+    instance.upgradeCombustionTech6 = $.extend({}, techBase, {
+        name: 'Upgrade Combustion Technology VI',
+        desc: 'Upgrading Combustion Technology VI will make Combustion generators produce 1,638,400 Energy per second instead of 51,200.',
+        buttonText: 'Upgrade Combustion generators',
+        type: TECH_TYPE.UPGRADE,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 9310000000,
+            'oil': 61300000000
+        },
+        tabAlerts: ['resources'],
+        onApply: function() {
+            Game.buildings.entries.energyET1.resourcePerSecond.energy *= 32;
         }
     });
 
@@ -654,7 +762,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 100000
+            'science': 100000,
+            'gem': 15000
         },
         newTechs: ['upgradeSolarTech3'],
         tabAlerts: ['resources'],
@@ -670,7 +779,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 1000000
+            'science': 1000000,
+            'gem': 320000
         },
         newTechs: ['upgradeSolarTech4'],
         tabAlerts: ['resources'],
@@ -686,7 +796,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 100000000
+            'science': 100000000,
+            'gem': 1560000
         },
         newTechs: ['upgradeSolarTech5'],
         tabAlerts: ['resources'],
@@ -702,7 +813,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 1000000000
+            'science': 1000000000,
+            'gem': 87130000
         },
         newTechs: ['upgradeSolarTech6'],
         tabAlerts: ['resources'],
@@ -718,7 +830,8 @@ Game.techData = (function () {
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 10000000000
+            'science': 10000000000,
+            'gem': 5150000000
         },
         tabAlerts: ['resources'],
         onApply: function() {
