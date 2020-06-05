@@ -19,7 +19,14 @@ Game.tech = (function(){
         this.update = function() {
             var obj = Game.tech.entries[id];
             if (new Date() - previous < 250 || obj.current == obj.maxLevel || !obj.unlocked) {return;}
-            var costObj = {cost:{"science":Game.tech.getCost(obj.cost.science, obj.current)}};
+
+            let costObj = {cost: {}};
+            let costKeys = Object.keys(obj.cost);
+            for (let i = 0; i < costKeys.length; i++) {
+                let key = costKeys[i];
+                costObj.cost[key] = Game.tech.getCost(obj.cost[key], obj.current);
+            }
+
             var value = Game.settings.doFormat('cost', costObj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
             previous = new Date();
